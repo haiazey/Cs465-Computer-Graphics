@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+
+<script id="vertex-shader" type="x-shader/x-vertex">
+
+attribute vec4 vPosition;
+attribute vec4 vColor;
+varying vec4 fColor;
+
+
+attribute vec2 a_position;
+
+uniform vec2 u_resolution;
+uniform vec2 u_translation;
+
+void
+main()
+{
+    gl_Position = vPosition;
+    fColor = vColor;
+    
+    // Add in the translation.
+   vec2 position = a_position + u_translation;
+
+   // convert the rectangle from pixels to 0.0 to 1.0
+   vec2 zeroToOne = position / u_resolution;
+}
+</script>
+
+<script id="fragment-shader" type="x-shader/x-fragment">
+
+precision mediump float;
+
+varying vec4 fColor;
+
+void
+main()
+{
+    gl_FragColor = fColor;
+}
+</script>
+
+<script type="text/javascript" src="../Common/webgl-utils.js"></script>
+<script type="text/javascript" src="../Common/initShaders.js"></script>
+<script type="text/javascript" src="../Common/MV.js"></script>
+<script type="text/javascript" src="village.js"></script>
+
+<body>
+<canvas id="gl-canvas" width="512" height="512" style="color: red;">>
+Oops ... your browser doesn't support the HTML5 canvas element
+</canvas>
+<form>
+  Min River Lenght :<input type="text" name="minLength" id="minLength">
+  Max River Lenght :<input type="text" name="maxLength" id="maxLength">
+    <input type="button" value="Submit" id = "Submit" >
+    <br>
+    <input type="button" value="House(Click Canvas) " id = "House" >
+    <input type="button" value="Tree(Click Canvas)" id = "Tree" >
+    <input type="button" value="Rock(Click Canvas)" id = "Rock" >
+    <br>
+    Circle count : <input type="text" name="count" id="count">
+    <input type="button" value="Draw Village" id = "Village" >    
+</form>
+</body>
+</html>
