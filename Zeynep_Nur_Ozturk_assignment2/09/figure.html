@@ -1,0 +1,178 @@
+<html>
+
+
+<script id="vertex-shader" type="x-shader/x-vertex">
+
+attribute  vec4 vPosition;
+
+uniform mat4 modelViewMatrix;
+uniform mat4 projectionMatrix;
+
+void main() 
+{
+    gl_Position = projectionMatrix * modelViewMatrix * vPosition;
+   
+    
+   
+} 
+</script>
+
+<script id="fragment-shader" type="x-shader/x-fragment">
+
+precision mediump float;
+void main()
+{
+	//gl_FragColor = texture2D(u_Sampler, v_Texture_coordinate);
+    gl_FragColor = vec4(0.95, 0.64, 0.37, 1.0);
+	//gl_FragColor = texture2D(uSampler, vTexCoord);
+}
+</script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r79/three.min.js"></script>
+
+<script type="text/javascript" src="../Common/webgl-utils.js"></script>
+<script type="text/javascript" src="../Common/initShaders.js"></script>
+<script type="text/javascript" src="../Common/MV.js"></script>
+<script type="text/javascript" src="figure.js"></script>
+
+<div id="slider0">
+torso angle -180 <input id="slide" type="range"
+ min="-180" max="180" step="10" value="0"
+  />
+ 180
+</div><br/>
+<div id="slider10">
+head2 angle -90 <input id="slide" type="range"
+ min="-90" max="90" step="10" value="0"
+  />
+ 90
+</div><br/>
+
+<div id="slider1">
+head1 angle -90 <input id="slide" type="range"
+ min="-90" max="60" step="10" value="0"
+  />
+ 60
+</div><br/>
+
+<div id="slider2">
+left front upper leg angle -70 <input id="slide" type="range"
+ min="-70" max="70" step="10" value="0"
+  />
+ 70
+</div><br/>
+<div id="slider3">
+left front lower leg angle -170 <input id="slide" type="range"
+ min="-170" max="0" step="10" value="0"
+  />
+ 0
+</div><br/>
+<div id="slider4">
+right front upper leg angle -70 <input id="slide" type="range"
+ min="-70" max="70" step="10" value="0"
+  />
+ 70
+</div><br/>
+<div id="slider5">
+right front lower leg angle -170 <input id="slide" type="range"
+ min="-170" max="0" step="10" value="0"
+  />
+ 0
+</div><br/>
+<div id="slider6">
+left back upper leg angle -70 <input id="slide" type="range"
+ min="-70" max="70" step="10" value="0"
+  />
+ 70
+</div><br/>
+<div id="slider7">
+left back lower leg angle -170 <input id="slide" type="range"
+ min="-170" max="0" step="10" value="0"
+  />
+ 0
+</div><br/>
+<div id="slider8">
+right back upper leg angle  -70 <input id="slide" type="range"
+ min="-70" max="70" step="10" value="0"
+  />
+ 70
+</div><br/>
+
+<div id="slider9">
+right back lower leg angle -170 <input id="slide" type="range"
+ min="-170" max="0" step="10" value="0"
+  />
+ 0
+</div><br/>
+
+<div id="slider11">
+left back feet angle -80 <input id="slide" type="range"
+ min="-80" max="80" step="10" value="0"
+  />
+ 80
+</div><br/>
+<div id="slider12">
+right back feet angle --80 <input id="slide" type="range"
+ min="-80" max="80" step="10" value="0"
+  />
+ 80
+</div><br/>
+
+<div id="slider13">
+right front feet angle -80 <input id="slide" type="range"
+ min="-80" max="80" step="10" value="0"
+  />
+ 80
+</div><br/>
+
+<div id="slider14">
+left front feet angle-80 <input id="slide" type="range"
+ min="-80" max="80" step="10" value="0"
+  />
+ 80
+</div><br/>
+
+<div id="slider15">
+tail upper angle -30 <input id="slide" type="range"
+ min="-30" max="30" step="10" value="0"
+  />
+ 30
+</div><br/>
+
+<div id="slider16">
+tail middle angle -30 <input id="slide" type="range"
+ min="-30" max="30" step="10" value="0"
+  />
+ 30
+</div><br/>
+
+<div id="slider17">
+tail lower angle -30 <input id="slide" type="range"
+ min="-30" max="30" step="10" value="0"
+  />
+ 30
+</div><br/>
+
+<div id="torsoPosition">
+torso position: 1 <input id="slide" type="range"
+ min="1" max="5" step="1" value="1"
+  />
+ 5
+</div><br/>
+<input type="text" name="frame" id = "frame">
+<input type="button" value="SubmitFrame" id = "SubmitFrame" >
+<br>
+
+</div><br/>
+<input type="text" name="fname" id = "filename">
+<input type="button" value="Submit" id = "Submit" >
+<br>
+<input type='file' accept='txt/*' onchange='openFile(event)'><br>
+
+<body>
+<canvas id="gl-canvas" width="512"" height="512"
+Oops ... your browser doesn't support the HTML5 canvas element
+</canvas>
+</body>
+</html>
